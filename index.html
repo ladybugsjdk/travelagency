@@ -69,8 +69,8 @@
           </div>
           Choose a time frame:<br>
           Arrival Date: <input type="date" name="arrival">
-          Departure Date: <input type="date" name="departure">
-          <input type="button" value="Search for Packages">
+          Departure Date: <input type="date" name="departure"><br>
+          <input type="button" value="Search for Packages" class="submitBtn">
         </form>
       </div>
   </div>
@@ -80,6 +80,10 @@
         $(".togglesearch").animate({
           height: '100%',
           opacity: '1'
+        });
+        $(".search").animate({
+          height: '0',
+          opacity: '0'
         });
       });
   });

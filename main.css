@@ -94,18 +94,28 @@ Advanced search
     padding: 10px;
 }
 
-.submitBtn {
-    background-color: #1CCAD8;
+.toggleTimeFrame {
+    display: block;
+    height: 0;
+    opacity: 0;
+    position: relative;
+}
+
+.locationBtn, .nextBtn, .submitBtn {
+    background-color: #0CF574;
     border: none;
     color: white;
-    padding: 15px 20px;
+    padding: 10px 15px;
     text-align: center;
     text-decoration: none;
-    display: block;
-    font-size: 16px;
-    margin: auto;
-    margin-top: 20px;
+    font-size: 15px;
 }
+
+.nextBtn, .submitBtn {
+    background-color: #1CCAD8;
+    float: right;
+}
+
 
 /*******
 Media Queries

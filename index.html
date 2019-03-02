@@ -41,8 +41,8 @@
   <!-- Advanced search -->
   <div class="advsearch">
     <p id="showForm">Not sure? <a href=#>We can help you choose.</a></p>
-    <div class="togglesearch">
       <form>
+          <div class="togglesearch">
           <p>Let's start off by selecting activities that are interesting to you.</p>
           <div class="gridcontainer">
             <div class="griditem"><input type="checkbox" name="act1" value="Biking"> Biking</div>
@@ -67,12 +67,17 @@
             <div class="griditem"><input type="checkbox" name="act20" value="WaterSkiing"> Water Skiing</div>
             <div class="griditem"><input type="checkbox" name="act21" value="Yoga"> Yoga</div>   
           </div>
-          Choose a time frame:<br>
-          Arrival Date: <input type="date" name="arrival">
-          Departure Date: <input type="date" name="departure"><br>
-          <input type="button" value="Search for Packages" class="submitBtn">
+          <input type="button" value="I've Thought of a Location" class="locationBtn" id="locationBtn1">
+          <input type="button" value="Next Step" class="nextBtn">
+          </div>
+          <div class="toggleTimeFrame">
+            Choose a time frame:<br>
+            Arrival Date: <input type="date" name="arrival">
+            Departure Date: <input type="date" name="departure"><br>
+            <input type="button" value="I've Thought of a Location" class="locationBtn" id="locationBtn2">
+            <input type="button" value="Search for Packages" class="submitBtn">
+        </div>
         </form>
-      </div>
   </div>
   <script>
     $(document).ready(function(){
@@ -90,6 +95,18 @@
           opacity: '0'
         });
       });
+
+      $(".nextBtn").click(function(){  //when "Help me Choose" is clicked
+        $(".toggleTimeFrame").animate({  //show the time frame part
+          height: '100%',
+          opacity: '1'
+        });
+        $(".togglesearch").animate({  //hides the activities part
+          height: '0',
+          opacity: '0'
+        });
+      });
+
   });
   </script>
 </body>

@@ -71,7 +71,7 @@
           <input type="button" value="Next Step" class="nextBtn">
           </div>
           <div class="toggleTimeFrame">
-            Choose a time frame:<br>
+            Choose a time frame that works best for you.<br>
             Arrival Date: <input type="date" name="arrival">
             Departure Date: <input type="date" name="departure"><br>
             <input type="button" value="I've Thought of a Location" class="locationBtn" id="locationBtn2">
@@ -104,6 +104,36 @@
         $(".togglesearch").animate({  //hides the activities part
           height: '0',
           opacity: '0'
+        });
+      });
+
+      $("#locationBtn1").click(function(){  //when "I've thought of a location (1)" is clicked
+        $(".search").animate({  //show the search bar
+          height: '100%',
+          opacity: '1'
+        });
+        $(".togglesearch").animate({  //hides the advanced search
+          height: '0',
+          opacity: '0'
+        });
+        $("#showForm").animate({  //shows the "help me choose"
+          height: '100%',
+          opacity: '1'
+        });
+      });
+
+      $("#locationBtn2").click(function(){  //when "I've thought of a location (2)" is clicked
+        $(".search").animate({  //show the search bar
+          height: '100%',
+          opacity: '1'
+        });
+        $(".toggleTimeFrame").animate({  //hides the advanced search
+          height: '0',
+          opacity: '0'
+        });
+        $("#showForm").animate({  //shows the "help me choose"
+          height: '100%',
+          opacity: '1'
         });
       });
 

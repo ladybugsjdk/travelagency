@@ -23,15 +23,13 @@ Nav Bar section
 
 #navbranding {
     float: left;
+    font-size: 20px;
 }
 
 .navitem {
     float: right;
 }
 
-.navitem:hover {
-    background-color: #2F97C1;
-}
 
 .navbar li a {
     text-decoration: none;
@@ -49,6 +47,27 @@ Image Gallery
 .mySlides {
     display: none;
 }
+
+/********
+Search bar
+*********/
+.search {
+    margin: auto;
+    margin-top: 100px;
+    width: 50%;
+}
+input[type=text] {
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    padding: 12px 20px 12px 40px;
+    background-image: url('/img/search.png');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+  }
 /*******
 Media Queries
 ********/

@@ -23,11 +23,12 @@ Nav Bar section
 
 #navbranding {
     float: left;
-    font-size: 20px;
+    font-size: 21px;
 }
 
 .navitem {
     float: right;
+    font-size: 18px;
 }
 
 
@@ -54,7 +55,7 @@ Search bar
 .search {
     margin: auto;
     margin-top: 100px;
-    width: 50%;
+    width: 75%;
 }
 input[type=text] {
     width: 100%;
@@ -68,6 +69,22 @@ input[type=text] {
     background-position: 10px 10px; 
     background-repeat: no-repeat;
   }
+
+/*************
+Advanced search
+*************/
+.advsearch {
+    margin: auto;
+    margin-top: 0;
+    width: 75%;
+}
+
+.gridcontainer {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+}
+
 /*******
 Media Queries
 ********/

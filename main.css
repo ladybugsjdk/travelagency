@@ -46,7 +46,9 @@ Nav Bar section
 /************
 Image Gallery
 ************/
-
+.mySlides {
+    display: none;
+}
 /*******
 Media Queries
 ********/

@@ -1,11 +1,54 @@
+/***********
+General Section
+https://coolors.co/587291-2f97c1-1ccad8-15e6cd-0cf574
+**********/
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+/***********
+Nav Bar section
+***********/
 .navbar {
-    background-color: #A61C3C;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    overflow: auto;
+    background-color: #1CCAD8;
 }
 
-.nav-link {
-    color: #F4AC45;
+#navbranding {
+    float: left;
 }
 
-.nav-link:hover {
-    color: #bd6f03;
+.navitem {
+    float: right;
 }
+
+.navitem:hover {
+    background-color: #2F97C1;
+}
+
+.navbar li a {
+    text-decoration: none;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 15px 18px;
+}
+
+
+
+/************
+Image Gallery
+************/
+
+/*******
+Media Queries
+********/
+
+  

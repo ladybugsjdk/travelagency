@@ -79,6 +79,12 @@ Advanced search
     width: 75%;
 }
 
+.togglesearch {
+    display: block;
+    height: 0;
+    opacity: 0;
+    position: relative;
+}
 .gridcontainer {
     display: grid;
     grid-template-columns: auto auto auto;

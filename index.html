@@ -40,10 +40,10 @@
 
   <!-- Advanced search -->
   <div class="advsearch">
-    <p>Not sure? <a id="showForm" href=#>We can help you choose.</a></p>
+    <p id="showForm">Not sure? <a href=#>We can help you choose.</a></p>
     <div class="togglesearch">
       <form>
-          Select activities that interest you:<br>
+          <p>Let's start off by selecting activities that are interesting to you.</p>
           <div class="gridcontainer">
             <div class="griditem"><input type="checkbox" name="act1" value="Biking"> Biking</div>
             <div class="griditem"><input type="checkbox" name="act2" value="Boating"> Boating</div>
@@ -76,12 +76,16 @@
   </div>
   <script>
     $(document).ready(function(){
-      $("#showForm").click(function(){
-        $(".togglesearch").animate({
+      $("#showForm").click(function(){  //when "Help me Choose" is clicked
+      $("#showForm").animate({  //hides the "help me choose"
+          height: '0',
+          opacity: '0'
+        });
+        $(".togglesearch").animate({  //shows the advanced search
           height: '100%',
           opacity: '1'
         });
-        $(".search").animate({
+        $(".search").animate({  //hides the location search
           height: '0',
           opacity: '0'
         });

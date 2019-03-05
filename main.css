@@ -183,8 +183,11 @@ a:visited {
 }
 .gridcontainer {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto;
     padding: 10px;
+}
+.griditem {
+    margin-bottom: 20px;
 }
 
 .toggleTimeFrame {

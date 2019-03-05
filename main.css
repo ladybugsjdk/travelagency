@@ -230,10 +230,9 @@ a:visited {
     -moz-border-radius: 20px;
     border-radius: 20px;
  }
- .black   { 
-    background-color: #000;
-    color: #fff;
- }
+ .black   { background-color: #000; }
+ .black select   { color: #fff; background-color: #000;}
+
 
 
 /*******

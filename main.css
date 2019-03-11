@@ -236,7 +236,24 @@ a:visited {
  .black   { background-color: #000; }
  .black select   { color: #fff; background-color: #000;}
 
+/***********************************************************************************************************/
+/**************
+Login
+**************/
+.login {
+    margin-top: 100px;
+    padding: 50px;
+}
 
+.loginform input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
 
 /*******
 Media Queries

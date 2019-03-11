@@ -19,7 +19,7 @@
     <li class="navitem"><a href="#index.html">Home</a></li>
   </ul>
 
-  <!-- Login - Current Users-->
+  <!-- Login - Registration -->
   <div class="login">
     <h1>Login</h1>
     <form>
@@ -38,11 +38,12 @@
   
   <script>
     $(document).ready(function(){
-        $(".registerbtn").click(function(){  //when "Help me Choose" is clicked
-            $(".register").animate({  //hides the "help me choose"
+        $(".registerbtn").click(function(){ 
+            $(".register").animate({ 
                 height: '100%',
                 opacity: '1'
             });
+            document.getElementsByClassName("registerbtn")[0].style.display = "none";
             document.getElementsByTagName("h1")[0].innerHTML = "Register";
         });
     });

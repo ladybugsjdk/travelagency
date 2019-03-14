@@ -22,13 +22,13 @@
   <!-- Login - Registration -->
   <div class="login">
     <h1>Login</h1>
-    <form>
+    <form name="login">
         Email: <input type="text" name="email" class="loginform"><br>
         Password: <input type="password" name="password" class="loginform"><br> 
         <div class="register" style="opacity: 0; height: 0;">
             Verify Password: <input type="password" name="password" class="loginform"><br>
             First Name: <input type="text" name="fname" class="loginform"><br>
-            Last Name: <input type="text" name="fname" class="loginform"><br>
+            Last Name: <input type="text" name="lname" class="loginform"><br>
         </div> 
         <button type="button" class="registerbtn">Sign Up</button>
         <button type="button" class="loginbtn">Login</button>
@@ -45,6 +45,8 @@
             });
             document.getElementsByClassName("registerbtn")[0].style.display = "none";
             document.getElementsByTagName("h1")[0].innerHTML = "Register";
+            var form = document.getElementsByName("login")[0];
+            form.setAttribute("name", "register");
         });
     });
 

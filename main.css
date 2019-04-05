@@ -157,7 +157,7 @@ input[type=text] {
     font-size: 16px;
     background-color: white;
     padding: 12px 20px 12px 40px;
-    background-image: url('/img/search.png');
+    background-image: url('http://localhost/Project/img/search.png');
     background-position: 10px 10px; 
     background-repeat: no-repeat;
   }

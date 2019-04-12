@@ -188,6 +188,54 @@
       });
 
   });
+
+  var asyncRequest; //holds XMLHttpRequest object
+
+  function getLocations( url ) {
+    try {
+      asyncRequest = new XMLHttpRequest();
+
+      asyncRequest.addEventListener("readystatechange", processResponse, false);
+      asyncRequest.open( "GET", url, true );
+      asyncRequest.send( null );
+    } catch ( exception ) {
+      alert( "Request Failed" );
+    }
+  }  //end function getLocations
+
+  //parse the XML response and check if entered location
+  //is available
+  function processResponse() {
+    if( asyncRequest.readyState == 4 && asyncRequest.status == 200 && 
+      asyncRequest.responseXML) {
+               
+    //get locations from responseXML
+    var locations = asyncRequest.responseXML.getElementsByTagName( "location" );
+
+    //get DOM object that holds location input
+    var searchLocation = document.getElementsByName( "searchLocation" )[0];
+
+    //go through locations and see if one matches entered location
+    for( var i = 0; i < locations.length; ++i ) {
+      var location = locations.item(i);
+      var locationName = location.getElementsByTagName( "name" ).
+        item(0).firstChild.nodeValue;
+      if( searchLocation.value == locationName ) {
+        searchLocation.style.borderColor = "green";
+        break;
+      } else {
+        searchLocation.style.borderColor = "red";
+      }
+    }  //end for loop
+    }  //end if statement
+  }  //end function processResponse()
+
+  function registerListener() {
+    document.getElementsByName( "searchLocation" )[0].addEventListener( 
+    "keypress", function() { getLocations( "locations.xml" ); }, false);
+  }
+
+  window.addEventListener( "load", registerListener, false );
   </script>
 </body>
 </html>

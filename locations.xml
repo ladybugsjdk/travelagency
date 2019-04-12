@@ -1,27 +1,27 @@
 <?xml version = "1.0"?>
   <locations>
   	  <location>
-        <name>Hawaii, United States</name>
+        <name>hawaii, united states</name>
       </location>
       <location>
-         <name>Paris, France</name>
+         <name>paris, france</name>
       </location>
       <location>
-         <name>New York, United States</name>
+         <name>new york, united states</name>
       </location>
       <location>
-         <name>Rome, Italy</name>
+         <name>rome, italy</name>
       </location>
       <location>
-         <name>Tokyo, Japan</name>
+         <name>tokyo, japan</name>
       </location>
   	  <location>
-         <name>Nassau, Bahamas</name>
+         <name>nassau, bahamas</name>
       </location>
       <location>
-         <name>White Harbor, Westeros</name>
+         <name>white harbor, westeros</name>
       </location>
       <location>
-         <name>Seattle, United States</name>
+         <name>seattle, united states</name>
       </location>
   </locations>

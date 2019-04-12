@@ -220,9 +220,11 @@
       var location = locations.item(i);
       var locationName = location.getElementsByTagName( "name" ).
         item(0).firstChild.nodeValue;
-      if( searchLocation.value == locationName ) {
+      if( searchLocation.value.toLowerCase() == locationName ) {
         searchLocation.style.borderColor = "green";
         break;
+      } else if (searchLocation.value == "") {
+        searchLocation.style.borderColor = "#ccc";
       } else {
         searchLocation.style.borderColor = "red";
       }

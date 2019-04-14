@@ -108,6 +108,7 @@
       .section {
           margin:auto;
           width:50%;
+          margin-bottom: 10px;
       }
     </style>
    </head>
@@ -163,6 +164,11 @@
             }
             ?>
         </div>
+        <div class="section">
+            <h3>Date</h3>
+            Arrival Date: <input type="date" name="arrival" id="arrival" class="date_selector"><br>
+            Departure Date: <input type="date" name="departure" id="departure" class="date_selector">
+        </div>
     </div>
     
 
@@ -177,6 +183,8 @@
                 var action = 'fetch_data';
                 var minimum_price = $('#hidden_minimum_price').val();
                 var maximum_price = $('#hidden_maximum_price').val();
+                var arrival_date =  $("input[name='arrival']").val();
+                var departure_date = $("input[name='departure']").val();
                 var biome = get_filter('biome');
                 var country = get_filter('country');
                 $.ajax({
@@ -184,7 +192,9 @@
                     method:"POST",
                     data:{action:action, 
                     minimum_price:minimum_price, 
-                    maximum_price:maximum_price, 
+                    maximum_price:maximum_price,
+                    arrival_date:arrival_date,
+                    departure_date:departure_date,
                     biome:biome, country:country},
                     success:function(data) {
                         $('.filter_data').html(data);
@@ -201,6 +211,10 @@
             }
 
             $('.common_selector').click(function(){
+                filter_data();
+            });
+
+            $('.date_selector').focus(function() {
                 filter_data();
             });
 

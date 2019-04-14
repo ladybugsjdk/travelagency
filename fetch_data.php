@@ -10,6 +10,17 @@ if(isset($_POST["minimum_price"], $_POST["maximum_price"]) &&
     $query .= " AND p.priceperday BETWEEN '".$_POST["minimum_price"]."' AND '".$_POST["maximum_price"]."'";
 }
 
+if(isset($_POST["arrival_date"]) && !empty($_POST["arrival_date"])) {
+    //$start = date("Y-m-d", strtotime($_POST["arrival_date"]));
+    $query .= " AND p.startdate >= '".$_POST["arrival_date"]."'";
+}
+
+if(isset($_POST["departure_date"]) && !empty($_POST["departure_date"])) {
+    //$end = date("Y-m-d", strtotime($_POST["departure_date"]));
+    $query .= " AND p.enddate <= '".$_POST["departure_date"]."'";
+}
+
+
 if(isset($_POST["biome"])) {
     $biome_filter = implode("','", $_POST["biome"]);
     $query .= " AND b.biomename IN ('".$biome_filter."')";
@@ -32,7 +43,7 @@ if($total_row > 0) {
         $output .= '
             <div class="package">
             <div style="border:1px solid #ccc; border-radius:5px;
-                padding:16px; margin:auto; margin-bottom:16px; height:200px; width:25%;">
+                padding:16px; margin:auto; margin-bottom:16px; height:200px; width:30%;">
             <h4 align="center">'. $row['locationname'] .'</h4>
             <h5 style="text-align:center;">'. $row['country'] .'</h5>
             <p>'. $row['biomename'] .'<br/>

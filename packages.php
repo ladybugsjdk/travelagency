@@ -1,3 +1,6 @@
+<?php
+   include('database_connection.php');
+?>
 <!DOCTYPE html>
 <html>
    <head>

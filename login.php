@@ -11,8 +11,6 @@
 <body>
     <?php
 
-        session_start();
-
 		$email = $_POST["email"];
 		$password = $_POST["password"];
         
@@ -20,13 +18,13 @@
         $query = "SELECT * FROM Users WHERE EmailAddress = '$email' AND uPassword ='$password'";
         //build query
         if( !($database = mysqli_connect("localhost", "iw3htp", "password"))) {
-            //die("Could not connect to database</body></html>");
             echo("<script>console.log('Could not connect to database');</script>");
+            die("Could not connect to database</body></html>");
         }
 
         if ( !mysqli_select_db( $database, "BlackMesaTravel" ) ) {
-           // die("Could not open database</body></html>");
            echo("<script>console.log('Could not open database');</script>");
+           die("Could not open database</body></html>");
         }
         
         /*
@@ -57,6 +55,7 @@
         echo("<script>console.log('success?');</script>");
 
         mysqli_close( $database );
+        
     ?>
   <!-- Navigation Bar -->
   <ul class="navbar">

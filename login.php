@@ -10,25 +10,52 @@
 </head>
 <body>
     <?php
+
 		$email = $_POST["email"];
 		$password = $_POST["password"];
-		
+        
+        
         $query = "SELECT * FROM Users WHERE EmailAddress = '$email' AND uPassword ='$password'";
         //build query
         if( !($database = mysqli_connect("localhost", "iw3htp", "password"))) {
+            echo("<script>console.log('Could not connect to database');</script>");
             die("Could not connect to database</body></html>");
         }
 
         if ( !mysqli_select_db( $database, "BlackMesaTravel" ) ) {
-            die("Could not open database</body></html>");
+           echo("<script>console.log('Could not open database');</script>");
+           die("Could not open database</body></html>");
         }
-
+        
+        /*
         if ( !( $result = mysqli_query( $database, $query ) ) ) {
             print("<p>Could not execute $query!</p>");
             die(mysqli_error() . "</body></html>");
+            echo("<script>console.log('Could not execute $query!');</script>");
         }
+        */
+
+        $result = mysqli_query($database, $query);
+        if($result->num_rows > 0){
+            $row = $result->fetch_assoc();
+
+            if($email == $row["EmailAddress"] && $password == $row["uPassword"]){
+                $cookie_firstname = $row["FirstName"];
+                $cookie_lastname = $row["LastName"];
+
+                setcookie("email", $email, time() + 300, "/"); //time + 300 = cookie lasts for 5 minutes
+                setcookie("firstname", $cookie_firstname, time() + 300, "/");
+                setcookie("lastname", $cookie_lastname, time() + 300, "/");
+                echo("<script>console.log('cookies created!');</script>");
+            }else{
+                echo("<script>console.log('No user found, cookies not created.');</script>");
+            }
+        }
+        
+        echo("<script>console.log('success?');</script>");
 
         mysqli_close( $database );
+        
     ?>
   <!-- Navigation Bar -->
   <ul class="navbar">

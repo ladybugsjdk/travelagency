@@ -2,7 +2,7 @@
 $connect = new PDO('mysql:host=localhost;dbname=BlackMesaTravel', 'iw3htp', 'password');
 
 if(isset($_POST["action"])) {
-    $query = "select l.locationname, l.country, b.biomename, p.priceperday, p.startdate, p.enddate from premier_locations l join biomes b on l.biomeid = b.biomeid join packages p on l.locationid = p.locationid";
+    $query = "select i.url, l.locationname, l.country, b.biomename, p.priceperday, DATE_FORMAT(p.startdate, '%M %d, %Y') as startdate, DATE_FORMAT(p.enddate, '%M %d, %Y') as enddate from premier_locations l join biomes b on l.biomeid = b.biomeid join packages p on l.locationid = p.locationid join images i on l.locationid = i.locationid";
 }
 
 if(isset($_POST["minimum_price"], $_POST["maximum_price"]) &&
@@ -43,13 +43,14 @@ if($total_row > 0) {
         $output .= '
             <div class="package">
             <div style="border:1px solid #ccc; border-radius:5px;
-                padding:16px; margin:auto; margin-bottom:16px; height:200px; width:30%;">
-            <h4 align="center">'. $row['locationname'] .'</h4>
-            <h5 style="text-align:center;">'. $row['country'] .'</h5>
+                padding:16px; margin:auto; margin-bottom:16px; height:400px; width:400px;">
+            <img src="'.$row['url'].'">
+            <h4 align="center">'. $row['locationname'] .', ' . $row['country'] . '</h4>
             <p>'. $row['biomename'] .'<br/>
             $'. $row['priceperday'] .' per day<br/>
             Start Date: '. $row['startdate'] .'<br/>
             End Date: '. $row['enddate'] .'</p>
+            <button type="button">Purchase</button>
             </div>
             </div>
         ';

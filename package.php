@@ -93,6 +93,7 @@
          -webkit-transition-duration: 0.4s;
          transition-duration: 0.4s;
          cursor: pointer;
+         margin-left: 150px;
       }
       button:hover {
          background-color: #1CCAD8;
@@ -102,7 +103,20 @@
       Filter
       ***********/
       .filter {
-          margin:auto;
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #f4f8ff;
+            overflow-x: hidden;
+            padding-top: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 50px;
+}
+
       }
 
       .section {
@@ -110,6 +124,20 @@
           width:50%;
           margin-bottom: 10px;
       }
+
+      .filter_data {
+          display: grid;
+          grid-template-columns: auto auto;
+          margin-left: 250px; /* Same as the width of the sidenav */
+            font-size: 15px; /* Increased text to enable scrolling */
+            padding: 0px 10px;
+      }
+
+     img {
+         width: 400px;
+         height: 200px;
+     }
+
     </style>
    </head>
    <body>
@@ -117,7 +145,7 @@
       <ul class="navbar">
          <li id="navbranding" class="navitem"><a href="index.html">Black Mesa Travel</a></li>
          <li class="navitem"><a href="login.html">Login/Signup</a></li>
-         <li class="navitem"><a href="packages.php">Premium Packages</a></li>
+         <li class="navitem"><a href="package.php">Premium Packages</a></li>
          <li class="navitem"><a href="#">Trending</a></li>
          <li class="navitem"><a href="index.html">Home</a></li>
       </ul>
@@ -127,6 +155,7 @@
             <h3>Price</h3>
             <input type="hidden" id="hidden_minimum_price" value="0"/>
             <input type="hidden" id="hidden_maximum_price" value="1200"/>
+            <h3>Price Range</h3>
             <p id="price_show">200-1200</p>
             <div id="price_range"></div>
         </div>
@@ -141,7 +170,7 @@
                 ?>
                 <label><input type="checkbox" class="common_selector biome"
                 value="<?php echo $row['BiomeName']; ?>">
-                <?php echo $row['BiomeName']; ?></label>
+                <?php echo $row['BiomeName']; ?></label><br>
                 <?php
 
             }
@@ -158,7 +187,7 @@
                 ?>
                 <label><input type="checkbox" class="common_selector country"
                 value="<?php echo $row['Country']; ?>">
-                <?php echo $row['Country']; ?></label>
+                <?php echo $row['Country']; ?></label><br>
                 <?php
 
             }
@@ -166,8 +195,13 @@
         </div>
         <div class="section">
             <h3>Date</h3>
-            Arrival Date: <input type="date" name="arrival" id="arrival" class="date_selector"><br>
-            Departure Date: <input type="date" name="departure" id="departure" class="date_selector">
+            Arrival Date: <br><input type="date" name="arrival" id="arrival" class="date_selector"><br>
+            Departure Date: <br><input type="date" name="departure" id="departure" class="date_selector">
+            <h3></h3>
+            <h3></h3>
+            <h3></h3>
+            <h3></h3>
+            <h3></h3>
         </div>
     </div>
     

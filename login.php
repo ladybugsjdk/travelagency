@@ -65,6 +65,21 @@
     <li class="navitem"><a href="#">Trending</a></li>
     <li class="navitem"><a href="index.html">Home</a></li>
   </ul>
-  <h1>Welcome</h1>
+  <h1 id="header1">Error Logging In.</h1>
+
+  <script>
+
+    //Get the current cookies, find the first name and welcome them
+    var x = document.cookie;
+    var ca = x.split("; ");
+    for(var i = 0; i < ca.length; i++){
+        var c = ca[i].split("=");
+        if(c[0] == "firstname"){
+            document.getElementById("header1").innerHTML = "Welcome, " + String(c[1]) + "!";
+        }
+    }
+    ///////
+
+  </script>
 </body>
 </html>

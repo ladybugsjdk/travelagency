@@ -1,8 +1,8 @@
 <?php
-$connect = new PDO('mysql:host=localhost;dbname=BlackMesaTravel', 'iw3htp', 'password');
-
+//$connect = new PDO('mysql:host=localhost;dbname=BlackMesaTravel', 'iw3htp', 'password');
+$connect = new PDO('mysql:host=rds-mysql-10mintutorial.cj3sjwqrps9d.us-east-1.rds.amazonaws.com;port=3306;dbname=BlackMesaTravel', 'masterUsername', 'blackmesatravel');
 if(isset($_POST["action"])) {
-    $query = "select i.url, l.locationname, l.country, b.biomename, p.priceperday, DATE_FORMAT(p.startdate, '%M %d, %Y') as startdate, DATE_FORMAT(p.enddate, '%M %d, %Y') as enddate from premier_locations l join biomes b on l.biomeid = b.biomeid join packages p on l.locationid = p.locationid join images i on l.locationid = i.locationid";
+    $query = "select i.url, l.locationname, l.country, b.biomename, p.priceperday, DATE_FORMAT(p.startdate, '%M %d, %Y') as startdate, DATE_FORMAT(p.enddate, '%M %d, %Y') as enddate from PREMIER_LOCATIONS l join BIOMES b on l.biomeid = b.biomeid join PACKAGES p on l.locationid = p.locationid join IMAGES i on l.locationid = i.locationid";
 }
 
 if(isset($_POST["minimum_price"], $_POST["maximum_price"]) &&

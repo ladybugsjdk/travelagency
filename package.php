@@ -1,6 +1,7 @@
 <?php
     //echo include('http://localhost/Project/database_connection.php');
-    $connect = new PDO('mysql:host=localhost;dbname=BlackMesaTravel', 'iw3htp', 'password');
+    //$connect = new PDO('mysql:host=localhost;dbname=BlackMesaTravel', 'iw3htp', 'password');
+    $connect = new PDO('mysql:host=rds-mysql-10mintutorial.cj3sjwqrps9d.us-east-1.rds.amazonaws.com;port=3306;dbname=BlackMesaTravel', 'masterUsername', 'blackmesatravel');
     //echo $connect;
 ?>
 <!DOCTYPE html>
@@ -162,7 +163,7 @@
         <div class="section">
             <h3>Biome</h3>
             <?php
-            $query = "SELECT BiomeName FROM Biomes ORDER BY BiomeName;"; //returns all biomes
+            $query = "SELECT BiomeName FROM BIOMES ORDER BY BiomeName;"; //returns all biomes
             $statement = $connect->prepare($query);
             $statement->execute();
             $result = $statement->fetchAll();
@@ -179,7 +180,7 @@
         <div class="section">
             <h3>Country</h3>
             <?php
-            $query = "select distinct(Country) from premier_locations order by locationname;"; //returns all distinct countries
+            $query = "select distinct(Country) from PREMIER_LOCATIONS order by LocationName;"; //returns all distinct countries
             $statement = $connect->prepare($query);
             $statement->execute();
             $result = $statement->fetchAll();

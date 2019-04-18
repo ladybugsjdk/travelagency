@@ -1,9 +1,3 @@
-<!-- locations.xml contains a list of all 
-      locations that are in the packages
-      will be used on the index.html page
-      to asynchronously check if a location is 
-      available through Black Mesa Travel.
--->
 <?xml version = "1.0"?>
   <locations>
   	  <location>
@@ -31,3 +25,10 @@
          <name>seattle, united states</name>
       </location>
   </locations>
+
+  <!-- locations.xml contains a list of all 
+      locations that are in the packages
+      will be used on the index.html page
+      to asynchronously check if a location is 
+      available through Black Mesa Travel.
+-->

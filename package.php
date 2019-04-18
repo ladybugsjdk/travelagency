@@ -247,7 +247,7 @@
                 filter_data();
             });
             //when a date is blured, update the data
-            $('.date_selector').blue(function() {
+            $('.date_selector').blur(function() {
                 filter_data();
             });
             //setting the jquery slider for the price range

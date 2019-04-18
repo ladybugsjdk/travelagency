@@ -1,6 +1,11 @@
+<!--package.php allows the user to 
+--  search through all available packages
+--  via ajax-enabled filtering.
+-->
 <?php
     //echo include('http://localhost/Project/database_connection.php');
     //$connect = new PDO('mysql:host=localhost;dbname=BlackMesaTravel', 'iw3htp', 'password');
+    //connecting to AWS instance of database
     $connect = new PDO('mysql:host=rds-mysql-10mintutorial.cj3sjwqrps9d.us-east-1.rds.amazonaws.com;port=3306;dbname=BlackMesaTravel', 'masterUsername', 'blackmesatravel');
     //echo $connect;
 ?>
@@ -11,7 +16,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Packages</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--<link rel="stylesheet" type="text/css" media="screen" href="package.css">-->
     <script src="http://localhost/Project/jquery-3.3.1.min.js"></script>
     <script src="http://localhost/Project/jquery-ui.js"></script>
     <link rel="stylesheet" type="text/css" media="screen" href="http://localhost/Project/jquery-ui.css">
@@ -62,21 +66,6 @@
       h1 {
          margin-top: 100px;
          text-align: center;
-      }
-
-      /**********
-      Table Wrapper
-      *************/
-      .tblwrapper {
-         width: 85%;
-         margin: auto;
-      }
-      table {
-         border-collapse: collapse;
-      }
-      td {
-         border-bottom: 1px solid black;
-         padding: 30px 15px;
       }
       /**********
       Buttons
@@ -142,6 +131,7 @@
     </style>
    </head>
    <body>
+
       <!-- Navigation Bar -->
       <ul class="navbar">
          <li id="navbranding" class="navitem"><a href="index.html">Black Mesa Travel</a></li>
@@ -150,7 +140,11 @@
          <li class="navitem"><a href="#">Trending</a></li>
          <li class="navitem"><a href="index.html">Home</a></li>
       </ul>
+
+      <!-- Packages header -->
     <h1>Packages</h1>
+
+    <!-- Sidebar that will contain filtering options -->
     <div class="filter">
         <div class="section">
             <h3>Price</h3>
@@ -160,6 +154,7 @@
             <p id="price_show">200-1200</p>
             <div id="price_range"></div>
         </div>
+        <!-- Filtering of biomes of all packages -->
         <div class="section">
             <h3>Biome</h3>
             <?php
@@ -177,6 +172,7 @@
             }
             ?>
         </div>
+        <!-- Filtering of all countries of all packages -->
         <div class="section">
             <h3>Country</h3>
             <?php
@@ -194,10 +190,12 @@
             }
             ?>
         </div>
+        <!-- Filtering of all dates of all packages -->
         <div class="section">
             <h3>Date</h3>
             Arrival Date: <br><input type="date" name="arrival" id="arrival" class="date_selector"><br>
             Departure Date: <br><input type="date" name="departure" id="departure" class="date_selector">
+            <!--Placeholder h3 tags that allow spacing at bottom of filtering side-bar -->
             <h3></h3>
             <h3></h3>
             <h3></h3>
@@ -206,14 +204,14 @@
         </div>
     </div>
     
-
+    <!-- Div where all packages will appear asynchronously -->
     <div class="filter_data">
     </div>
 
     <script>
         $(document).ready(function() {
             filter_data();
-
+            //Ajax function to collect filtering data and send it to fetch_data.php
             function filter_data() {
                 var action = 'fetch_data';
                 var minimum_price = $('#hidden_minimum_price').val();
@@ -236,7 +234,7 @@
                     }
                 });
             }
-            
+            //gets all filters from a specific checkbox section
             function get_filter(class_name) {
                 var filter = [];
                 $('.'+class_name+':checked').each(function() {
@@ -244,15 +242,15 @@
                 });
                 return filter;
             }
-
+            //when a filter option is clicked, update the data
             $('.common_selector').click(function(){
                 filter_data();
             });
-
-            $('.date_selector').focus(function() {
+            //when a date is blured, update the data
+            $('.date_selector').blue(function() {
                 filter_data();
             });
-
+            //setting the jquery slider for the price range
             $('#price_range').slider({
                 range:true,
                 min:200,

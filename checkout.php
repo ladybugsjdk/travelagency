@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Checkout</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="main.js"></script>
-    <style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: Arial;
+  font-size: 17px;
+  padding: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 .row {
   display: -ms-flexbox; /* IE10 */
   display: flex;
@@ -78,12 +85,20 @@ label {
   background-color: #45a049;
 }
 
+a {
+  color: #2196F3;
+}
+
+hr {
+  border: 1px solid lightgrey;
+}
+
 span.price {
   float: right;
   color: grey;
 }
 
-/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (and change the direction - make the "cart" column go on top) */
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
 @media (max-width: 800px) {
   .row {
     flex-direction: column-reverse;
@@ -92,14 +107,16 @@ span.price {
     margin-bottom: 20px;
   }
 }
-    </style>
+</style>
 </head>
 <body>
+
+<h2>Black Mesa Checkout</h2>
 <div class="row">
   <div class="col-75">
     <div class="container">
       <form action="/action_page.php">
-
+      
         <div class="row">
           <div class="col-50">
             <h3>Billing Address</h3>
@@ -139,7 +156,6 @@ span.price {
             <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
             <label for="expmonth">Exp Month</label>
             <input type="text" id="expmonth" name="expmonth" placeholder="September">
-
             <div class="row">
               <div class="col-50">
                 <label for="expyear">Exp Year</label>
@@ -151,33 +167,50 @@ span.price {
               </div>
             </div>
           </div>
-
+          
         </div>
         <label>
           <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
         </label>
-        <input type="submit" value="Continue to checkout" class="btn">
+        <input type="submit" value="Checkout" class="btn">
       </form>
     </div>
   </div>
-
   <div class="col-25">
     <div class="container">
-      <h4>Cart 
-        <span class="price" style="color:black">
-          <i class="fa fa-shopping-cart"></i> 
-          <b>4</b>
-        </span>
-      </h4>
-      <p><a href="#">Product 1</a> <span class="price">$15</span></p>
+      <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>0</b></span></h4>
+      
+      <!-- Placeholder items in cart -->
+      <!-- <p><a href="#">Product 1</a> <span class="price">$15</span></p>
       <p><a href="#">Product 2</a> <span class="price">$5</span></p>
       <p><a href="#">Product 3</a> <span class="price">$8</span></p>
-      <p><a href="#">Product 4</a> <span class="price">$2</span></p>
+      <p><a href="#">Product 4</a> <span class="price">$2</span></p> -->
+
+
+      
       <hr>
-      <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
+      <p id="Total">Total <span class="price" style="color:black"><b>$0</b></span></p>
     </div>
   </div>
 </div>
-    
+
 </body>
+
+<script>
+  var x = document.cookie;
+  var ca = x.split("; ");
+  for(var i = 0; i < ca.length; i++){
+    var c = ca[i].split("=");
+    if(c[0] == "firstname"){
+      window.alert("test");
+      var f = String(c[1]) + " ";
+    }else if(c[0] == "lastname"){
+      document.getElementById("fname").value = f + '' + String(c[1]);
+    }else if(c[0] == "email"){
+      var e = String(c[1]);
+      var res = e.replace("%40", "@");
+      document.getElementById("email").value = res;
+    }
+  }
+</script>
 </html>

@@ -46,6 +46,7 @@
                 setcookie("email", $email, time() + 300, "/"); //time + 300 = cookie lasts for 5 minutes
                 setcookie("firstname", $cookie_firstname, time() + 300, "/");
                 setcookie("lastname", $cookie_lastname, time() + 300, "/");
+                setcookie("fullname", $cookie_firstname . " " . $cookie_lastname, time() + 300, "/");
                 echo("<script>console.log('cookies created!');</script>");
             }else{
                 echo("<script>console.log('No user found, cookies not created.');</script>");

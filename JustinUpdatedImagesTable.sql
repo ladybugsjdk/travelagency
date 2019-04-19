@@ -64,8 +64,8 @@ CREATE TABLE IMAGES
 CREATE TABLE PTRANSACTIONS
 (
 	TransactionID int NOT NULL auto_increment primary key,
-    PackageID int NOT NULL PRIMARY KEY,
-    UserID int NOT NULL primary key,
+    PackageID int NOT NULL,
+    UserID int NOT NULL,
     TransactionDate date NOT NULL,
     FOREIGN KEY (PackageId) REFERENCES PACKAGES(PackageId),
     FOREIGN KEY (UserId) REFERENCES USERS(UserId)

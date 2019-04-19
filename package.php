@@ -16,8 +16,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Packages</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="http://localhost/project2/jquery-3.3.1.min.js"></script>
-    <script src="http://localhost/project2/jquery-ui.js"></script>
+    <script src="http://localhost/Project/jquery-3.3.1.min.js"></script>
+    <script src="http://localhost/Project/jquery-ui.js"></script>
     <link rel="stylesheet" type="text/css" media="screen" href="http://localhost/Project/jquery-ui.css">
     <style>
       body {

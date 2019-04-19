@@ -115,7 +115,7 @@ span.price {
 <div class="row">
   <div class="col-75">
     <div class="container">
-      <form action="/action_page.php">
+      <form action="/purchase_complete.php">
       
         <div class="row">
           <div class="col-50">
@@ -178,14 +178,17 @@ span.price {
   </div>
   <div class="col-25">
     <div class="container">
-      <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>0</b></span></h4>
+      <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b id="cartqty">1</b></span></h4>
       
       <!-- Placeholder items in cart -->
-      <!-- <p><a href="#">Product 1</a> <span class="price">$15</span></p>
+      <!--<p><a href="#">Product 1</a> <span class="price">$15</span></p>
       <p><a href="#">Product 2</a> <span class="price">$5</span></p>
       <p><a href="#">Product 3</a> <span class="price">$8</span></p>
-      <p><a href="#">Product 4</a> <span class="price">$2</span></p> -->
-
+      <p><a href="#">Product 4</a> <span class="price">$2</span></p> 
+      -->
+      <ul id = "cartitems">
+        <li>Test Item<span class="price">$15</span></li>
+      </ul>
 
       
       <hr>
@@ -202,7 +205,6 @@ span.price {
   for(var i = 0; i < ca.length; i++){
     var c = ca[i].split("=");
     if(c[0] == "firstname"){
-      window.alert("test");
       var f = String(c[1]) + " ";
     }else if(c[0] == "lastname"){
       document.getElementById("fname").value = f + '' + String(c[1]);

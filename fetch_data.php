@@ -66,10 +66,10 @@ if($total_row > 0) {
             <img src="'.$row['url'].'">
             <h4 align="center">'. $row['locationname'] .', ' . $row['country'] . '</h4>
             <p>'. $row['biomename'] .'<br/>
-            $'. $row['priceperday'] .' per day<br/>
             Start Date: '. $row['startdate'] .'<br/>
             End Date: '. $row['enddate'] .'</p>
-            <button type="button" onClick="func()">Purchase</button>
+            <p>$'. $row['priceperday'] .' per day</p>            
+            <button type="button" class="addtocart" onClick="func(this)">Purchase</button>
             </div>
             </div>
         ';

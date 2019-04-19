@@ -16,8 +16,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Packages</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="http://localhost/Project/jquery-3.3.1.min.js"></script>
-    <script src="http://localhost/Project/jquery-ui.js"></script>
+    <script src="http://localhost/project2/jquery-3.3.1.min.js"></script>
+    <script src="http://localhost/project2/jquery-ui.js"></script>
     <link rel="stylesheet" type="text/css" media="screen" href="http://localhost/Project/jquery-ui.css">
     <style>
       body {
@@ -207,7 +207,22 @@
     <!-- Div where all packages will appear asynchronously -->
     <div class="filter_data">
     </div>
-
+    <script>
+        function func(elem){
+            var parent = elem.parentElement;
+            var children = parent.children;
+            var location;
+            var price;
+            for(let i = 0; i < children.length; i++) {
+                if(i == 1) {
+                    location = children[i].innerHTML;
+                }
+                if(i == 3) {
+                    price = children[i].innerHTML;
+                }
+            }
+        }
+    </script>
     <script>
         $(document).ready(function() {
             filter_data();
@@ -264,14 +279,28 @@
                     filter_data();
                 }
             });
+
+            $('.addtocart').click(function() {
+                var parent = this.parent();
+                console.log(parent);
+                console.log("inside click function");
+                /*$.ajax({
+                    url:"http://localhost/project2/additem.php",
+                    method:"POST",
+                    data:{action:action, 
+                    minimum_price:minimum_price, 
+                    maximum_price:maximum_price,
+                    arrival_date:arrival_date,
+                    departure_date:departure_date,
+                    biome:biome, country:country},
+                    success:function(data) {
+                        $('.filter_data').html(data);
+                    }
+            });*/
+            });
             
         });
     </script>
-
-    <script>
-        function func(){
-            console.log("test");
-        }
-    </script>
    </body>
+   
 </html>

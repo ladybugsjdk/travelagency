@@ -69,7 +69,7 @@ if($total_row > 0) {
             $'. $row['priceperday'] .' per day<br/>
             Start Date: '. $row['startdate'] .'<br/>
             End Date: '. $row['enddate'] .'</p>
-            <button type="button">Purchase</button>
+            <button type="button" onClick="func()">Purchase</button>
             </div>
             </div>
         ';

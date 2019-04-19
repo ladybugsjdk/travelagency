@@ -267,5 +267,11 @@
             
         });
     </script>
+
+    <script>
+        function func(){
+            console.log("test");
+        }
+    </script>
    </body>
 </html>

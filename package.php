@@ -246,6 +246,7 @@
                     biome:biome, country:country},
                     success:function(data) {
                         $('.filter_data').html(data);
+                        foobar();
                     }
                 });
             }
@@ -279,25 +280,42 @@
                     filter_data();
                 }
             });
+            
+            function foobar(){
+                $('.addtocart').click(function() {
+                    var p = this.parentNode;
+                    var c = p.children;
+                    
+                    var PackageName = c[1].innerHTML;
+                    var cost = c[3].innerHTML;
+                    
+                    /*$.ajax({
+                        url:"http://localhost/project2/additem.php",
+                        method:"POST",
+                        data:{action:action, 
+                        minimum_price:minimum_price, 
+                        maximum_price:maximum_price,
+                        arrival_date:arrival_date,
+                        departure_date:departure_date,
+                        biome:biome, country:country},
+                        success:function(data) {
+                            $('.filter_data').html(data);
+                        }
+                    });*/
 
-            $('.addtocart').click(function() {
-                var parent = this.parent();
-                console.log(parent);
-                console.log("inside click function");
-                /*$.ajax({
-                    url:"http://localhost/project2/additem.php",
-                    method:"POST",
-                    data:{action:action, 
-                    minimum_price:minimum_price, 
-                    maximum_price:maximum_price,
-                    arrival_date:arrival_date,
-                    departure_date:departure_date,
-                    biome:biome, country:country},
-                    success:function(data) {
-                        $('.filter_data').html(data);
-                    }
-            });*/
-            });
+                    $.ajax({
+                        url:"http://localhost/Project/additem.php",
+                        method:"POST",
+                        data:{
+                            PackageName:PackageName,
+                            cost:cost
+                        },
+                        success:function(){
+                            window.alert("Item added to cart!");
+                        }
+                    });
+                });
+            }
             
         });
     </script>

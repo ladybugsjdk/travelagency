@@ -280,12 +280,12 @@
                     filter_data();
                 }
             });
-            
+            var itemCount = 0;
             function foobar(){
                 $('.addtocart').click(function() {
                     var p = this.parentNode;
                     var c = p.children;
-                    
+                    itemCount++;
                     var PackageName = c[1].innerHTML;
                     var cost = c[3].innerHTML;
                     
@@ -308,7 +308,8 @@
                         method:"POST",
                         data:{
                             PackageName:PackageName,
-                            cost:cost
+                            cost:cost,
+                            count:itemCount
                         },
                         success:function(){
                             window.alert("Item added to cart!");

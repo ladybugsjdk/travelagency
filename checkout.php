@@ -165,6 +165,15 @@ span.price {
                 <label for="cvv">CVV</label>
                 <input type="text" id="cvv" name="cvv" placeholder="352">
               </div>
+                <div class="col-50">
+                  <label for="arrival">Arrival Date</label>
+                  <input type="date" name="arrival" id="arrival" class="date_selector">
+                </div>
+                <div class="col-50">
+                  <label for="departure">Departure Date</label>
+                  <input type="date" name="departure" id="departure" class="date_selector">
+                </div>
+              
             </div>
           </div>
           
@@ -187,12 +196,11 @@ span.price {
       <p><a href="#">Product 4</a> <span class="price">$2</span></p> 
       -->
       <ul id = "cartitems">
-        <li>Test Item<span class="price">$15</span></li>
       </ul>
 
       
       <hr>
-      <p id="Total">Total <span class="price" style="color:black"><b>$0</b></span></p>
+      <p id="Total">Total <span class="price" style="color:black"><b>Please enter arrival and departure times</b></span></p>
     </div>
   </div>
 </div>
@@ -200,6 +208,38 @@ span.price {
 </body>
 
 <script>
+
+  window.onLoad = loadItems();
+  var arr = [];
+
+  //gets items the user added and displays them on the cart section on the right
+  function loadItems(){
+    let count = 0;
+    var x = document.cookie;
+    var ca = x.split("; ");
+    var i = 0;
+    while(i < ca.length){
+      var c = ca[i].split("=");
+      if(c[0].includes("PackageName") && i+1 < ca.length){
+        var d = ca[i+1].split("=");
+
+        var destination = String(c[1]);
+        destination = destination.split("%2C").join(",");
+        destination = destination.split("+").join(" ");
+        var price = String(d[1]);
+        price = price.split("%24").join("$");
+        price = price.split("+").join(" ");
+        document.getElementById("cartitems").innerHTML += '<li>' + destination + '<span class="price">' + price + '</span></li>';
+        i+=2;
+        count++;
+      }else{
+        i++;
+      }
+    }
+    document.getElementById("cartqty").innerHTML = count;
+  }
+
+  //if user is signed in, this autofills the full name and email sections
   var x = document.cookie;
   var ca = x.split("; ");
   for(var i = 0; i < ca.length; i++){
@@ -214,5 +254,26 @@ span.price {
       document.getElementById("email").value = res;
     }
   }
+
+
+  //every time the dates change, calculate the new total cost
+  document.getElementById("departure").addEventListener("change", function(){
+      var startTime = document.getElementById("arrival").value;
+      var endTime = this.value;
+
+      var startDate = new Date(startTime);
+      var endDate = new Date(endTime);
+      var millisecondsPerDay = 24 * 60 * 60 * 1000;
+      
+      var days = (treatAsUTC(endDate) - treatAsUTC(startDate)) / millisecondsPerDay;
+
+      window.alert("Difference in days: " + days);
+  });
+
+  function treatAsUTC(date){
+    date.setMinutes(date.getMinutes() - date.getTimezoneOffset());
+    return date;
+  }
+
 </script>
 </html>

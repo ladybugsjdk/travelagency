@@ -200,7 +200,7 @@ span.price {
 
       
       <hr>
-      <p id="Total">Total <span class="price" style="color:black"><b>Please enter arrival and departure times</b></span></p>
+      <p>Total <span class="price" style="color:black"><b id="total">Please enter arrival and departure times</b></span></p>
     </div>
   </div>
 </div>
@@ -229,7 +229,7 @@ span.price {
         var price = String(d[1]);
         price = price.split("%24").join("$");
         price = price.split("+").join(" ");
-        document.getElementById("cartitems").innerHTML += '<li>' + destination + '<span class="price">' + price + '</span></li>';
+        document.getElementById("cartitems").innerHTML += '<li>' + destination + '<span class="price" id="itemprice">' + price + '</span></li>';
         i+=2;
         count++;
       }else{
@@ -268,6 +268,16 @@ span.price {
       var days = (treatAsUTC(endDate) - treatAsUTC(startDate)) / millisecondsPerDay;
 
       window.alert("Difference in days: " + days);
+
+      //TODO: should be changed to handle multiple items in cart
+      var price = document.getElementById("itemprice").innerHTML;
+      var c = price.split(" ");
+      price = c[0].substring(1, c[0].length);
+      price = parseInt(price, 10);
+      price *= days;
+
+      document.getElementById("total").innerHTML = "$" + price;
+
   });
 
   function treatAsUTC(date){

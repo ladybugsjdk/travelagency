@@ -115,19 +115,21 @@ span.price {
 <div class="row">
   <div class="col-75">
     <div class="container">
-      <form action="/PurchaseComplete.php">
+      <form action="/Project/PurchaseComplete.php" method="post">
       
         <div class="row">
           <div class="col-50">
             <h3>Billing Address</h3>
             <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-            <input type="text" id="fname" name="firstname" placeholder="John M. Doe" required>
+            <input type="text" id="fname" name="fullname" placeholder="John M. Doe" required>
             <label for="email"><i class="fa fa-envelope"></i> Email</label>
             <input type="text" id="email" name="email" placeholder="john@example.com" required>
             <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
             <input type="text" id="adr" name="address" placeholder="542 W. 15th Street"  required>
             <label for="city"><i class="fa fa-institution"></i> City</label>
             <input type="text" id="city" name="city" placeholder="New York"  required>
+            <input type="text" id="hiddenPackageID" name="hiddenPackageID" value="abc">
+            <input type="text" id="hiddenUserID" name="hiddenUserID" value="abc">
 
             <div class="row">
               <div class="col-50">
@@ -210,8 +212,8 @@ span.price {
 <script>
 
   window.onLoad = loadItems();
-  
-  //gets items the user added and displays them on the cart section on the right
+
+  //gets items the user added and displays them on the cart section on the right.  Also adds to hidden form
   function loadItems(){
     let count = 0;
     var x = document.cookie;
@@ -229,11 +231,18 @@ span.price {
         price = price.split("%24").join("$");
         price = price.split("+").join(" ");
         document.getElementById("cartitems").innerHTML += '<li>' + destination + '<span class="price" id="itemprice">' + price + '</span></li>';
-        i+=2;
-        count++;
-      }else{
         i++;
+        count++;
+      }else if(c[0].includes("PackageID")){
+        
+        document.getElementById("hiddenPackageID").value = c[1];
+
+      }else if(c[0].includes("userID")){
+        console.log("Gottem: " + c[1]);
+        document.getElementById("hiddenUserID").value = c[1];
       }
+
+      i++;
     }
     document.getElementById("cartqty").innerHTML = count;
   }

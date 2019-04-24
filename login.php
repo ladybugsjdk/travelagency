@@ -42,11 +42,14 @@
             if($email == $row["EmailAddress"] && $password == $row["uPassword"]){
                 $cookie_firstname = $row["FirstName"];
                 $cookie_lastname = $row["LastName"];
+                $cookie_userID = $row["UserID"];
 
                 setcookie("email", $email, time() + 300, "/"); //time + 300 = cookie lasts for 5 minutes
                 setcookie("firstname", $cookie_firstname, time() + 300, "/");
                 setcookie("lastname", $cookie_lastname, time() + 300, "/");
                 setcookie("fullname", $cookie_firstname . " " . $cookie_lastname, time() + 300, "/");
+                setcookie("userID", $cookie_userID, time() + 300, "/");
+
                 echo("<script>console.log('cookies created!');</script>");
             }else{
                 echo("<script>console.log('No user found, cookies not created.');</script>");
@@ -62,7 +65,7 @@
   <ul class="navbar">
     <li id="navbranding" class="navitem"><a href="index.html">Black Mesa Travel</a></li>
     <li class="navitem"><a href="login.html">Login/Signup</a></li>
-    <li class="navitem"><a href="packages.php">Premium Packages</a></li>
+    <li class="navitem"><a href="package.php">Premium Packages</a></li>
     <li class="navitem"><a href="#">Trending</a></li>
     <li class="navitem"><a href="index.html">Home</a></li>
   </ul>

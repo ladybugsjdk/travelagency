@@ -10,7 +10,7 @@ $connect = new PDO('mysql:host=mysql-bmtravel.cj3sjwqrps9d.us-east-1.rds.amazona
 
 //setting base query
 if(isset($_POST["action"])) {
-    $query = "select i.url, l.locationname, l.country, b.biomename, p.priceperday, DATE_FORMAT(p.startdate, '%M %d, %Y') as startdate, DATE_FORMAT(p.enddate, '%M %d, %Y') as enddate from PREMIER_LOCATIONS l join BIOMES b on l.biomeid = b.biomeid join PACKAGES p on l.locationid = p.locationid join IMAGES i on l.locationid = i.locationid";
+    $query = "select i.url, l.locationname, l.country, b.biomename, p.priceperday, p.packageid, DATE_FORMAT(p.startdate, '%M %d, %Y') as startdate, DATE_FORMAT(p.enddate, '%M %d, %Y') as enddate from PREMIER_LOCATIONS l join BIOMES b on l.biomeid = b.biomeid join PACKAGES p on l.locationid = p.locationid join IMAGES i on l.locationid = i.locationid";
 }
 
 //if a min price/max price is set, add to the query
@@ -70,6 +70,7 @@ if($total_row > 0) {
             End Date: '. $row['enddate'] .'</p>
             <p>$'. $row['priceperday'] .' per day</p>            
             <button type="button" class="addtocart" onClick="func(this)">Purchase</button>
+            <b id=' . $row['packageid'] . '></b>
             </div>
             </div>
         ';

@@ -147,7 +147,7 @@
     <!-- Sidebar that will contain filtering options -->
     <div class="filter">
         <div class="section">
-            <h3>Price</h3>
+            <br><br>
             <input type="hidden" id="hidden_minimum_price" value="0"/>
             <input type="hidden" id="hidden_maximum_price" value="1200"/>
             <h3>Price Range</h3>
@@ -280,6 +280,8 @@
                     filter_data();
                 }
             });
+
+            //Grabs whatever package you clicked, adds information as cookies
             var itemCount = 0;
             function foobar(){
                 $('.addtocart').click(function() {
@@ -288,28 +290,15 @@
                     itemCount++;
                     var PackageName = c[1].innerHTML;
                     var cost = c[3].innerHTML;
-                    
-                    /*$.ajax({
-                        url:"http://localhost/project2/additem.php",
-                        method:"POST",
-                        data:{action:action, 
-                        minimum_price:minimum_price, 
-                        maximum_price:maximum_price,
-                        arrival_date:arrival_date,
-                        departure_date:departure_date,
-                        biome:biome, country:country},
-                        success:function(data) {
-                            $('.filter_data').html(data);
-                        }
-                    });*/
-
+                    var id = c[5].id;
                     $.ajax({
                         url:"http://localhost/Project/additem.php",
                         method:"POST",
                         data:{
                             PackageName:PackageName,
                             cost:cost,
-                            count:itemCount
+                            count:itemCount,
+                            id:id
                         },
                         success:function(){
                             window.alert("Item added to cart!");

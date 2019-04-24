@@ -10,8 +10,30 @@
 </head>
 <body>
     <?php
-
+        //Items in post: fullname, email, address, city, state, zip, cardname, cardnumber, expmonth, expyear, cvv, arrival, departure, hiddenPackageID, hiddenUserID
         
+        $Temp = $_POST['hiddenUserID'];
+        echo("<script>console.log('" . $Temp . "');</script>");
+
+        $query = "insert into PTRANSACTIONS(PackageID, UserID, TransactionDate) values ('" . $_POST['hiddenPackageID'] . "', '" . $_POST['hiddenUserID'] . "', '" . date("Y-m-d") . "');";
+        
+        if( !($database = mysqli_connect("localhost", "iw3htp", "password"))) {
+            echo("<script>console.log('Could not connect to database');</script>");
+            die("Could not connect to database</body></html>");
+        }
+
+        if ( !mysqli_select_db( $database, "BlackMesaTravel" ) ) {
+            echo("<script>console.log('Could not open database');</script>");
+            die("Could not open database</body></html>");
+        }
+
+        $result = mysqli_query($database, $query);
+
+        if($result === TRUE){
+            echo("<script>console.log('Successfully inserted');</script>");
+        }else{
+            echo("<script>console.log('failure');</script>");
+        }
     ?>
   <!-- Navigation Bar -->
   <ul class="navbar">
@@ -23,9 +45,5 @@
   </ul>
   <h1 id="header1">Error Processing Checkout</h1>
 
-  <script>
-      
-
-  </script>
 </body>
 </html>

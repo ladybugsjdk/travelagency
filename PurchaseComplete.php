@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title id="title">Order Failed</title>
+    <title id="title">Your Order</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="profile.css">
     <script src="http://localhost/Project/jquery-3.3.1.min.js"></script>
@@ -18,21 +18,21 @@
         $query = "insert into PTRANSACTIONS(PackageID, UserID, TransactionDate) values ('" . $_POST['hiddenPackageID'] . "', '" . $_POST['hiddenUserID'] . "', '" . date("Y-m-d") . "');";
         
         if( !($database = mysqli_connect("localhost", "iw3htp", "password"))) {
-            echo("<script>console.log('Could not connect to database');</script>");
+            echo("<h1>Error Processing Checkout</h1>");
             die("Could not connect to database</body></html>");
         }
 
         if ( !mysqli_select_db( $database, "BlackMesaTravel" ) ) {
-            echo("<script>console.log('Could not open database');</script>");
+            echo("<h1>Error Processing Checkout</h1>");
             die("Could not open database</body></html>");
         }
 
         $result = mysqli_query($database, $query);
 
         if($result === TRUE){
-            echo("<script>console.log('Successfully inserted');</script>");
+            echo("<h1> Checkout Completed! </h1>");
         }else{
-            echo("<script>console.log('failure');</script>");
+            echo("<h1>Error Processing Checkout</h1>");
         }
     ?>
   <!-- Navigation Bar -->
@@ -43,7 +43,7 @@
     <li class="navitem"><a href="#">Trending</a></li>
     <li class="navitem"><a href="index.html">Home</a></li>
   </ul>
-  <h1 id="header1">Error Processing Checkout</h1>
+  
 
 </body>
 </html>

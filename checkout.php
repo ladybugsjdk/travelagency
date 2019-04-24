@@ -128,8 +128,8 @@ span.price {
             <input type="text" id="adr" name="address" placeholder="542 W. 15th Street"  required>
             <label for="city"><i class="fa fa-institution"></i> City</label>
             <input type="text" id="city" name="city" placeholder="New York"  required>
-            <input type="text" id="hiddenPackageID" name="hiddenPackageID" value="abc">
-            <input type="text" id="hiddenUserID" name="hiddenUserID" value="abc">
+            <input type="hidden" id="hiddenPackageID" name="hiddenPackageID" value="abc">
+            <input type="hidden" id="hiddenUserID" name="hiddenUserID" value="abc">
 
             <div class="row">
               <div class="col-50">

@@ -85,7 +85,6 @@
   echo  "<p>Please enter a search query</p>";
   }
   }
-  }
 ?>
   </div>
 

@@ -16,9 +16,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Packages</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="http://localhost/Project/jquery-3.3.1.min.js"></script>
-    <script src="http://localhost/Project/jquery-ui.js"></script>
-    <link rel="stylesheet" type="text/css" media="screen" href="http://localhost/Project/jquery-ui.css">
+    <script src="http://localhost/Projects/jquery-3.3.1.min.js"></script>
+    <script src="http://localhost/Projects/jquery-ui.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="http://localhost/Projects/jquery-ui.css">
     <style>
       body {
          font-family: Arial, Helvetica, sans-serif;
@@ -105,14 +105,19 @@
             padding-left: 20px;
             padding-right: 20px;
             padding-bottom: 50px;
-}
-
-      }
-
+        }
       .section {
           margin:auto;
           width:50%;
           margin-bottom: 10px;
+      }
+
+      .searched_package {
+          display: grid;
+          grid-template-columns: auto;
+          margin-left: 250px; /* Same as the width of the sidenav */
+            font-size: 15px; /* Increased text to enable scrolling */
+            padding: 0px 10px;
       }
 
       .filter_data {
@@ -142,7 +147,8 @@
       </ul>
 
       <!-- Packages header -->
-    <h1>Packages</h1>
+    <h1 style="margin-left:250px">Packages</h1>
+    
 
     <!-- Sidebar that will contain filtering options -->
     <div class="filter">
@@ -203,10 +209,52 @@
             <h3></h3>
         </div>
     </div>
-    
+    <div class="searched_package">
+    <?php
+    if(isset($_GET["locationname"])) {
+        $locationname = $_GET["locationname"];
+        $query2 = "select i.url, l.locationname, l.country, b.biomename, p.priceperday, p.packageid, DATE_FORMAT(p.startdate, '%M %d, %Y') as startdate, DATE_FORMAT(p.enddate, '%M %d, %Y') as enddate from PREMIER_LOCATIONS l join BIOMES b on l.biomeid = b.biomeid join PACKAGES p on l.locationid = p.locationid join IMAGES i on l.locationid = i.locationid WHERE l.locationname LIKE '" . $locationname .  "';";
+        //prepare the query for execution
+        $statement = $connect->prepare($query2);
+        //execute query
+        $statement->execute();
+        //store the result
+        $result = $statement->fetchAll();
+        //gather total rows returned from query
+        $total_row = $statement->rowCount();
+        //initialize output variable
+        $output="";
+        if($total_row > 0) {
+            foreach($result as $row) {
+                //create and output div for each package
+                $output .= '
+                    <div class="package">
+                    <div style="border:1px solid green; border-radius:5px;
+                        padding:16px; margin:auto; margin-bottom:16px; height:400px; width:400px;">
+                    <img src="'.$row['url'].'">
+                    <h4 align="center">'. $row['locationname'] .', ' . $row['country'] . '</h4>
+                    <p>'. $row['biomename'] .'<br/>
+                    Start Date: '. $row['startdate'] .'<br/>
+                    End Date: '. $row['enddate'] .'</p>
+                    <p>$'. $row['priceperday'] .' per day</p>            
+                    <button type="button" class="addtocart" onClick="func(this)">Purchase</button>
+                    <b id=' . $row['packageid'] . '></b>
+                    </div>
+                    </div>
+                    
+                ';
+            }
+        } else {
+            $output = '<h3>No Data Found</h3>';
+        }
+        echo $output;
+    }
+    ?>
+    </div>
     <!-- Div where all packages will appear asynchronously -->
     <div class="filter_data">
     </div>
+
     <script>
         function func(elem){
             var parent = elem.parentElement;
@@ -236,7 +284,7 @@
                 var biome = get_filter('biome');
                 var country = get_filter('country');
                 $.ajax({
-                    url:"http://localhost/Project/fetch_data.php",
+                    url:"http://localhost/Projects/fetch_data.php",
                     method:"POST",
                     data:{action:action, 
                     minimum_price:minimum_price, 
@@ -292,7 +340,7 @@
                     var cost = c[3].innerHTML;
                     var id = c[5].id;
                     $.ajax({
-                        url:"http://localhost/Project/additem.php",
+                        url:"http://localhost/Projects/additem.php",
                         method:"POST",
                         data:{
                             PackageName:PackageName,

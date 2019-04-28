@@ -12,11 +12,12 @@
     <?php
         //Items in post: fullname, email, address, city, state, zip, cardname, cardnumber, expmonth, expyear, cvv, arrival, departure, hiddenPackageID, hiddenUserID
         
-        $Temp = $_POST['hiddenUserID'];
-        echo("<script>console.log('" . $Temp . "');</script>");
+        //$Temp = $_POST['hiddenUserID'];
+        //echo("<script>console.log('" . $Temp . "');</script>");
 
         $query = "insert into PTRANSACTIONS(PackageID, UserID, TransactionDate) values ('" . $_POST['hiddenPackageID'] . "', '" . $_POST['hiddenUserID'] . "', '" . date("Y-m-d") . "');";
         
+        /*
         if( !($database = mysqli_connect("localhost", "iw3htp", "password"))) {
             echo("<h1>Error Processing Checkout</h1>");
             die("Could not connect to database</body></html>");
@@ -34,6 +35,16 @@
         }else{
             echo("<h1>Error Processing Checkout</h1>");
         }
+        */
+
+        $connect = new PDO('mysql:host=mysql-bmtravel.cj3sjwqrps9d.us-east-1.rds.amazonaws.com;port=3306;dbname=BlackMesaTravel', 'masterUsername', 'blackmesatravel');
+        $statement = $connect->prepare($query);
+        if($statement->execute()){
+            echo("<h1> Checkout Completed! </h1>");
+        }else{
+            echo("<h1>Error Processing Checkout</h1>");
+        }
+
     ?>
   <!-- Navigation Bar -->
   <ul class="navbar">

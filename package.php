@@ -16,9 +16,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Packages</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="http://localhost/Projects/jquery-3.3.1.min.js"></script>
-    <script src="http://localhost/Projects/jquery-ui.js"></script>
-    <link rel="stylesheet" type="text/css" media="screen" href="http://localhost/Projects/jquery-ui.css">
+    <script src="http://localhost/Project/jquery-3.3.1.min.js"></script>
+    <script src="http://localhost/Project/jquery-ui.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="http://localhost/Project/jquery-ui.css">
     <style>
       body {
          font-family: Arial, Helvetica, sans-serif;
@@ -284,7 +284,7 @@
                 var biome = get_filter('biome');
                 var country = get_filter('country');
                 $.ajax({
-                    url:"http://localhost/Projects/fetch_data.php",
+                    url:"http://localhost/Project/fetch_data.php",
                     method:"POST",
                     data:{action:action, 
                     minimum_price:minimum_price, 
@@ -340,7 +340,7 @@
                     var cost = c[3].innerHTML;
                     var id = c[5].id;
                     $.ajax({
-                        url:"http://localhost/Projects/additem.php",
+                        url:"http://localhost/Project/additem.php",
                         method:"POST",
                         data:{
                             PackageName:PackageName,

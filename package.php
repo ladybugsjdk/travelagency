@@ -140,7 +140,7 @@
       <!-- Navigation Bar -->
       <ul class="navbar">
          <li id="navbranding" class="navitem"><a href="index.html">Black Mesa Travel</a></li>
-         <li class="navitem"><a href="login.html">Login/Signup</a></li>
+         <li class="navitem" id="loginLink"><a href="login.html">Login/Signup</a></li>
          <li class="navitem"><a href="package.php">Premium Packages</a></li>
          <li class="navitem"><a href="#">Trending</a></li>
          <li class="navitem"><a href="index.html">Home</a></li>
@@ -357,6 +357,8 @@
             
         });
     </script>
+
+    <script src="checkLogin.js"></script>
    </body>
    
 </html>

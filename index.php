@@ -12,11 +12,11 @@
 <body>
   <!-- Navigation Bar -->
   <ul class="navbar">
-    <li id="navbranding" class="navitem"><a href="index.html">Black Mesa Travel</a></li>
+    <li id="navbranding" class="navitem"><a href="index.php">Black Mesa Travel</a></li>
     <li class="navitem" id="loginLink"><a href="login.html">Login/Signup</a></li>
     <li class="navitem"><a href="package.php">Premium Packages</a></li>
-    <li class="navitem"><a href="#">Trending</a></li>
-    <li class="navitem"><a href="index.html">Home</a></li>
+    <li class="navitem"><a href="trending.php">Trending</a></li>
+    <li class="navitem"><a href="index.php">Home</a></li>
   </ul>
 
   <!-- Image sliders -->
@@ -31,7 +31,7 @@
       <img src="http://localhost/Project/img/img2.jpeg">
     </div>
     <div class="slide">
-      <p class="slidertext">Build your own package!</p>
+      <p class="slidertext">Search for packages!</p>
       <img src="http://localhost/Project/img/img3.jpeg">
     </div>
     <div class="slide">

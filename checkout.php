@@ -202,7 +202,7 @@ span.price {
 
       
       <hr>
-      <p>Total <span class="price" style="color:black"><b id="total">Please enter arrival and departure times</b></span></p>
+      <p>Total:<span class="price" style="color:black"><b id="total">Enter arrival and departure times</b></span></p>
     </div>
   </div>
 </div>

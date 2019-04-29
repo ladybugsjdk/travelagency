@@ -17,7 +17,7 @@
         
         $query = "SELECT * FROM Users WHERE EmailAddress = '$email' AND uPassword ='$password'";
         //build query
-        if( !($database = mysqli_connect("localhost", "iw3htp", "password"))) {
+        if( !($database = mysqli_connect("mysql-bmtravel.cj3sjwqrps9d.us-east-1.rds.amazonaws.com:3306", "masterUsername", "blackmesatravel"))) {
             echo("<script>console.log('Could not connect to database');</script>");
             die("Could not connect to database</body></html>");
         }
@@ -65,11 +65,11 @@
 
     <!-- Navigation Bar -->
     <ul class="navbar">
-      <li id="navbranding" class="navitem"><a href="index.html">Black Mesa Travel</a></li>
+      <li id="navbranding" class="navitem"><a href="index.php">Black Mesa Travel</a></li>
       <li class="navitem" id="loginLink"><a href="login.html">Login/Signup</a></li>
       <li class="navitem"><a href="package.php">Premium Packages</a></li>
-      <li class="navitem"><a href="#">Trending</a></li>
-      <li class="navitem"><a href="index.html">Home</a></li>
+      <li class="navitem"><a href="trending.php">Trending</a></li>
+      <li class="navitem"><a href="index.php">Home</a></li>
     </ul>
   <h1 id="header1">Error Logging In.</h1>
 

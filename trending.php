@@ -92,11 +92,9 @@
       /**********
       Filter
       ***********/
-      .package {
+      .searched_package {
           display: grid;
           grid-template-columns: auto auto;
-          margin-left: 250px; /* Same as the width of the sidenav */
-            font-size: 15px; /* Increased text to enable scrolling */
             padding: 0px 10px;
       }
 
@@ -111,19 +109,19 @@
 
       <!-- Navigation Bar -->
       <ul class="navbar">
-         <li id="navbranding" class="navitem"><a href="index.html">Black Mesa Travel</a></li>
+         <li id="navbranding" class="navitem"><a href="index.php">Black Mesa Travel</a></li>
          <li class="navitem"><a href="login.html">Login/Signup</a></li>
          <li class="navitem"><a href="package.php">Premium Packages</a></li>
-         <li class="navitem"><a href="#">Trending</a></li>
+         <li class="navitem"><a href="trending.php">Trending</a></li>
          <li class="navitem"><a href="index.php">Home</a></li>
       </ul>
 
       <!-- Packages header -->
-    <h1 style="text-align:center;">Packages</h1>
+    <h1 style="text-align:center;">Trending Packages</h1>
     
     <div class="searched_package">
     <?php
-        $query2 = "select i.url, l.locationname, l.country, b.biomename, p.priceperday, p.packageid, DATE_FORMAT(p.startdate, '%M %d, %Y') as startdate, DATE_FORMAT(p.enddate, '%M %d, %Y') as enddate from PREMIER_LOCATIONS l join BIOMES b on l.biomeid = b.biomeid join PACKAGES p on l.locationid = p.locationid join IMAGES i on l.locationid = i.locationid join PTRANSACTIONS pt on p.packageid = pt.packageid WHERE pt.transactiondate >= '2019-03-28';";
+        $query2 = "select DISTINCT i.url, l.locationname, l.country, b.biomename, p.priceperday, p.packageid, DATE_FORMAT(p.startdate, '%M %d, %Y') as startdate, DATE_FORMAT(p.enddate, '%M %d, %Y') as enddate from PREMIER_LOCATIONS l join BIOMES b on l.biomeid = b.biomeid join PACKAGES p on l.locationid = p.locationid join IMAGES i on l.locationid = i.locationid join PTRANSACTIONS pt on p.packageid = pt.packageid WHERE pt.transactiondate >= '2019-03-28';";
         //prepare the query for execution
         $statement = $connect->prepare($query2);
         //execute query
@@ -147,7 +145,7 @@
                     Start Date: '. $row['startdate'] .'<br/>
                     End Date: '. $row['enddate'] .'</p>
                     <p>$'. $row['priceperday'] .' per day</p>            
-                    <button type="button" class="addtocart" onClick="func(this)">Purchase</button>
+                    <button type="button" class="addtocart">Purchase</button>
                     <b id=' . $row['packageid'] . '></b>
                     </div>
                     </div>
@@ -160,6 +158,38 @@
         echo $output;
     ?>
     </div>
+    <script>
+        $(document).ready(function() {
+            //Grabs whatever package you clicked, adds information as cookies
+            var itemCount = 0;
+            function foobar(){
+                $('.addtocart').click(function() {
+                    var p = this.parentNode;
+                    var c = p.children;
+                    itemCount++;
+                    var PackageName = c[1].innerHTML;
+                    var cost = c[3].innerHTML;
+                    var id = c[5].id;
+                    $.ajax({
+                        url:"http://localhost/Project/additem.php",
+                        method:"POST",
+                        data:{
+                            PackageName:PackageName,
+                            cost:cost,
+                            count:itemCount,
+                            id:id
+                        },
+                        success:function(){
+                            window.alert("Item added to cart!");
+                            window.location.href = "http://localhost/Project/checkout.php";
+                        }
+                    });
+                });
+            }
+            foobar();
+        });
+        
+    </script>
    </body>
    
 </html>

@@ -129,7 +129,7 @@ span.price {
             <label for="city"><i class="fa fa-institution"></i> City</label>
             <input type="text" id="city" name="city" placeholder="New York"  required>
             <input type="hidden" id="hiddenPackageID" name="hiddenPackageID" value="abc">
-            <input type="hidden" id="hiddenUserID" name="hiddenUserID" value="abc">
+            <input type="hidden" id="hiddenUserID" name="hiddenUserID" value="4">
 
             <div class="row">
               <div class="col-50">
@@ -238,7 +238,6 @@ span.price {
         document.getElementById("hiddenPackageID").value = c[1];
 
       }else if(c[0].includes("userID")){
-        console.log("Gottem: " + c[1]);
         document.getElementById("hiddenUserID").value = c[1];
       }
 

@@ -350,6 +350,7 @@
                         },
                         success:function(){
                             window.alert("Item added to cart!");
+                            window.location.href = "http://localhost/Project/checkout.php";
                         }
                     });
                 });

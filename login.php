@@ -44,11 +44,11 @@
                 $cookie_lastname = $row["LastName"];
                 $cookie_userID = $row["UserID"];
 
-                setcookie("email", $email, time() + 300, "/"); //time + 300 = cookie lasts for 5 minutes
-                setcookie("firstname", $cookie_firstname, time() + 300, "/");
-                setcookie("lastname", $cookie_lastname, time() + 300, "/");
-                setcookie("fullname", $cookie_firstname . " " . $cookie_lastname, time() + 300, "/");
-                setcookie("userID", $cookie_userID, time() + 300, "/");
+                setcookie("email", $email, "/"); //time + 300 = cookie lasts for 5 minutes
+                setcookie("firstname", $cookie_firstname, "/");
+                setcookie("lastname", $cookie_lastname, "/");
+                setcookie("fullname", $cookie_firstname . " " . $cookie_lastname, "/");
+                setcookie("userID", $cookie_userID, "/");
 
                 echo("<script>console.log('cookies created!');</script>");
             }else{
@@ -61,14 +61,16 @@
         mysqli_close( $database );
         
     ?>
-  <!-- Navigation Bar -->
-  <ul class="navbar">
-    <li id="navbranding" class="navitem"><a href="index.html">Black Mesa Travel</a></li>
-    <li class="navitem"><a href="login.html">Login/Signup</a></li>
-    <li class="navitem"><a href="package.php">Premium Packages</a></li>
-    <li class="navitem"><a href="#">Trending</a></li>
-    <li class="navitem"><a href="index.html">Home</a></li>
-  </ul>
+
+
+    <!-- Navigation Bar -->
+    <ul class="navbar">
+      <li id="navbranding" class="navitem"><a href="index.html">Black Mesa Travel</a></li>
+      <li class="navitem" id="loginLink"><a href="login.html">Login/Signup</a></li>
+      <li class="navitem"><a href="package.php">Premium Packages</a></li>
+      <li class="navitem"><a href="#">Trending</a></li>
+      <li class="navitem"><a href="index.html">Home</a></li>
+    </ul>
   <h1 id="header1">Error Logging In.</h1>
 
   <script>
@@ -85,5 +87,7 @@
     ///////
 
   </script>
+
+  <script src="checkLogin.js"></script>
 </body>
 </html>

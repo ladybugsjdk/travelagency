@@ -1,28 +1,61 @@
 <?xml version = "1.0"?>
   <locations>
   	  <location>
-        <name>hawaii, united states</name>
+        <name>paris</name>
       </location>
       <location>
-         <name>paris, france</name>
+         <name>new york city</name>
       </location>
       <location>
-         <name>new york, united states</name>
+         <name>rome</name>
       </location>
       <location>
-         <name>rome, italy</name>
+         <name>tokyo</name>
       </location>
       <location>
-         <name>tokyo, japan</name>
+         <name>seattle</name>
       </location>
   	  <location>
-         <name>nassau, bahamas</name>
+         <name>los angeles</name>
       </location>
       <location>
-         <name>white harbor, westeros</name>
+         <name>mexico city</name>
       </location>
       <location>
-         <name>seattle, united states</name>
+         <name>dubai</name>
+      </location>
+      <location>
+         <name>london</name>
+      </location>
+      <location>
+         <name>berlin</name>
+      </location>
+      <location>
+         <name>las vegas</name>
+      </location>
+      <location>
+         <name>buenos aires</name>
+      </location>
+      <location>
+         <name>yellowstone</name>
+      </location>
+      <location>
+         <name>nepal</name>
+      </location>
+      <location>
+         <name>venezuela</name>
+      </location>
+      <location>
+         <name>machu picchu</name>
+      </location>
+      <location>
+         <name>mount everest</name>
+      </location>
+      <location>
+         <name>hawaii</name>
+      </location>
+      <location>
+         <name>bahamas</name>
       </location>
   </locations>
 

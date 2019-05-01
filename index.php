@@ -50,7 +50,7 @@
     <h2>Where you do you want to go?</h2>
     <form method="post" action="index.php?go"  id="searchform">
       <input type="text" name="searchLocation" placeholder="Search for locations...">
-      <input type="submit" name="submit" value="Search">
+      <input type="submit" name="submit" value="Search" style="background-color: #4CAF50; border: none; color: white; padding: 16px 32px; text-decoration: none; margin-top: 10px; margin-left: 500px;">
     </form>
     <?php
         //checking to see if submit is clicked and if user has entered a location
@@ -229,10 +229,10 @@
 
   function getLocations( url ) {
     try {
-      asyncRequest = new XMLHttpRequest();
+      asyncRequest = new XMLHttpRequest();//creating request object
 
       asyncRequest.addEventListener("readystatechange", processResponse, false);
-      asyncRequest.open( "GET", url, true );
+      asyncRequest.open( "GET", url, true );  //opening get request
       asyncRequest.send( null );
     } catch ( exception ) {
       alert( "Request Failed" );
@@ -259,7 +259,7 @@
       if( searchLocation.value.toLowerCase() == locationName ) {
         searchLocation.style.borderColor = "green";
         break;
-      } else if (searchLocation.value == "") {
+      } else if (searchLocation.value == "" || searchLocation.value == " ") {
         searchLocation.style.borderColor = "#ccc";
       } else {
         searchLocation.style.borderColor = "red";
@@ -270,7 +270,7 @@
 
   function registerListener() {
     document.getElementsByName( "searchLocation" )[0].addEventListener( 
-    "keypress", function() { getLocations( "locations.xml" ); }, false);
+    "keypress", function() { getLocations( "http://localhost/Project/locations.xml" ); }, false);
   }
 
   window.addEventListener( "load", registerListener, false );
